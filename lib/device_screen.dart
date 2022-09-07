@@ -140,14 +140,12 @@ class DeviceScreen extends StatelessWidget {
                                       await e.write(Utils.getRandomBytes()),
                                 ),
                                 children: e.descriptors
-                                    .map(
-                                      (e) => DescriptorTile(
-                                        descriptor: e,
-                                        onReadPressed: () async => e.read(),
-                                        onWritePressed: () =>
-                                            e.write(Utils.getRandomBytes()),
-                                      ),
-                                    )
+                                    .map((e) => DescriptorTile(
+                                          descriptor: e,
+                                          onReadPressed: () async => e.read(),
+                                          onWritePressed: () =>
+                                              e.write(Utils.getRandomBytes()),
+                                        ))
                                     .toList(),
                               ),
                             )

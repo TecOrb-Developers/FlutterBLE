@@ -2,54 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ble/device_screen.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  late BuildContext dialogCtx;
-  @override
-  void initState() {
-    FlutterBluePlus.instance.state.listen((event) {
-      if (event == BluetoothState.off) {
-        // showDialog(
-        //     context: context,
-        //     builder: ((context) {
-        //       dialogCtx = context;
-        //       return const BluetoohOffDialog();
-        //     }));
-        // SmartDialog.show(
-        //   tag: "bluetooth_off",
-
-        //   alignment: Alignment.center,
-        //   backDismiss: false,
-        //   clickMaskDismiss: false,
-        //   builder: (_) {
-        //     return Container(
-        //       padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
-        //       child: Column(
-        //         children: const [
-        //           Text(
-        //             "Oh Snap!",
-        //             style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-        //           ),
-        //           Text(
-        //             "Looks like bluetooth is off. Turn on the bluetooth to start scan.",
-        //             maxLines: 2,
-        //           ),
-        //         ],
-        //       ),
-        //     );
-        //   },
-        // );
-      } else {}
-    });
-
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,9 +35,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       trailing: ElevatedButton(
                         onPressed: () {
                           device.device.connect();
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (_) =>
-                                  DeviceScreen(device: device.device)));
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (_) =>
+                                    DeviceScreen(device: device.device)),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           primary: Colors.blue,
